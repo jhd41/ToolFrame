@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LogCfg>
+  <!-- 日志执行器-->
+  <!-- 每个执行器配置对应一个执行器 可创建多个同类型执行器-->
+  <!-- 日志执行有两种形式,立即执行,线程执行。(立即执行将降低系统运行速度,线程执行将导致LOG可能打印不完全。) -->
+  <!-- 通配符: 进程名(不带后缀):{ProcessName} 可写目录:{WriteableDir} 工作目录:{WorkDir} 日期时间:{DateTime}-->
+
+  <!-- 一般日志-->
+  <!-- 屏幕打印器-->
+  <!--是否打印屏幕(默认:是) 颜色只对windows有效,颜色值查看 颜色附表-->
+  <!-- 颜色附表 -->
+  <!--  
+		FOREGROUND_BLUE      0x0001 // text color contains blue.
+		FOREGROUND_GREEN     0x0002 // text color contains green.
+		FOREGROUND_RED       0x0004 // text color contains red.
+		FOREGROUND_INTENSITY 0x0008 // text color is intensified.
+		BACKGROUND_BLUE      0x0010 // background color contains blue.
+		BACKGROUND_GREEN     0x0020 // background color contains green.
+		BACKGROUND_RED       0x0040 // background color contains red.
+		BACKGROUND_INTENSITY 0x0080 // background color is intensified.
+	-->
+  <LogExecutor Name = "Printer">
+    <LogLevel Level="System"	  IsPrint="1" Color="2" />
+    <LogLevel Level="Warning"	  IsPrint="1" Color="12" />
+    <LogLevel Level="DebugErr"	IsPrint="1" Color="1" />
+    <LogLevel Level="ClientErr"	IsPrint="1" Color="20" />
+    <LogLevel Level="Error"		  IsPrint="1" Color="192" />
+    <LogLevel Level="Fatal"		  IsPrint="1" Color="192" />
+  </LogExecutor>
+  <!-- 文件写入器-->
+  <!-- 缓冲区大小	默认值1024 填写区间1~65535-->
+  <LogExecutor Name = "Writer" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/{ProcessName}.log">
+    <LogLevel Level="System"	IsWrite="0" />
+    <LogLevel Level="Warning"	IsWrite="1" />
+    <LogLevel Level="DebugErr"	IsWrite="1" />
+    <LogLevel Level="ClientErr"	IsWrite="1" />
+    <LogLevel Level="Error"	IsWrite="1" />
+    <LogLevel Level="Fatal"	IsWrite="1" />
+  </LogExecutor>
+
+  <!--网络日志-->
+  <!-- 屏幕打印器-->
+  <LogExecutor Name = "Printer">
+    <LogLevel Level="NetDebug"	IsPrint="0" Color="18" />
+    <LogLevel Level="NetErr"	IsPrint="1" Color="36" />
+  </LogExecutor>
+  <!-- 文件写入器-->
+  <LogExecutor Name = "Writer" IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/net_{DateTime}.log">
+    <LogLevel Level="NetDebug"	IsWrite="0" />
+    <LogLevel Level="NetErr"	IsWrite="0" />
+  </LogExecutor>
+
+  <!-- 调试日志-->
+  <!-- 屏幕打印器-->
+  <LogExecutor Name = "Printer">
+    <LogLevel Level="Debug"		IsPrint="1" Color="18" />
+  </LogExecutor>
+  <!-- 文件写入器-->
+  <LogExecutor Name = "Writer" IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/debug_{DateTime}.log">
+    <LogLevel Level="Debug"		IsWrite="0"  />
+  </LogExecutor>
+
+  <!-- Lua日志 -->
+  <!-- 屏幕打印器-->
+  <LogExecutor Name = "Printer">
+    <LogLevel Level="Lua"         IsPrint="1" Color="2" />
+    <LogLevel Level="LuaDebug"		IsPrint="1" Color="18" />
+    <LogLevel Level="LuaErr"		IsPrint="1" Color="192" />
+  </LogExecutor>
+  <!-- 文件写入器-->
+  <LogExecutor Name = "Writer" IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/lua_{DateTime}.log">
+    <LogLevel Level="Lua"		      IsWrite="0" />
+    <LogLevel Level="LuaDebug"		IsWrite="0"  />
+    <LogLevel Level="LuaErr"		  IsWrite="1" />
+  </LogExecutor>
+
+  <!--网络发送器(未完成)-->
+  <LogExecutor Name = "Sender">
+  </LogExecutor>
+</LogCfg>

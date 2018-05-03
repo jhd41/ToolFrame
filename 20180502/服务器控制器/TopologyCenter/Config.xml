@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Config>
+  <!--
+  默认发送接收缓冲区为无限
+  SendSize="65535" RecvSize="65535" PackSize="8192" BlockSize="65536"
+  -->
+  <Center Title="GameCenter" Port="16000" Password=""  />
+</Config>

@@ -1,0 +1,43 @@
+迭代器的分类：
+
+输入迭代器；
+
+输出迭代器；
+
+前向迭代器；
+
+双向迭代器；
+
+随机存取迭代器；
+
+迭代器的作用：迭代器用来遍历一个容器只是它一方面的功能，还有一个重要的功能就是做为算法和容器的桥梁,在算法和容器中间添加了一层迭代，那么，算法的操作就只需要与迭代器作用了，这样将算法和容器分离，
+
+如果你自己的容器需要使用那些算法（排序），只需要按照标准实现你对应容器的迭代器即可。
+
+答案很简单,不是所有数据结构都是线性的!对于一个链表来说,如果要实现上述的功能,我们必须重新写一个几乎
+一样仅仅是把++start变成start = start->next的函数.显然,这样重复的事情我们是不希望碰到的,尤其如果函数
+还非常大的情况下.而这时候,iterator的作用就出来了.对于链表,我们的链表的iterator(list_iterator)仅只
+
+要把operator++()重写成operator++(){now = now->next;},就能正常的使用find函数了.完全不需要重新编写.
+这就减少了我们算法的编写量.
+
+大坑：
+
+for (list<int>::iterator iTer = lstData.begin(); iTer != lstData.end(); ++iTer)
+{
+  if (某条件)
+    lstData.erase(iTer);//此时iTer已经失效，无法进行++操作
+  else
+    //正常遍历
+}
+
+正确的用法：
+
+for (list<int>::iterator iTer = lstData.begin(); iTer != lstData.end(); )
+{
+  if (某条件)
+    lstData.erase(iTer++);
+  else
+    //正常遍历
+    ++iTer;
+}

@@ -1,0 +1,5 @@
+<Role>
+	<Frame ID="1" Value="100" Money="100" />
+	<Frame ID="2" Value="300" Money="200" />
+	<Frame ID="3" Value="400" Money="100" />
+</Role>

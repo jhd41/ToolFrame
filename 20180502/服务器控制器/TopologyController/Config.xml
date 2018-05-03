@@ -1,0 +1,262 @@
+﻿<Config Name="游戏服务器组" >
+  <!--
+  默认发送接收缓冲区为无限
+  SendSize="65535" RecvSize="65535" PackSize="8192" BlockSize="65536"
+  -->
+  <Center Address="127.0.0.1:16000" Password="" Remark="中心服务器地址" ServerGroupID="1" ServerZoneID="1" ServerName="内部调试服" ServerOpen="2015-12-10" />
+  <WarningConfig>
+    <WarningColor>
+      <Warning Level="ServerInit"  TextColor="255,255,0" TextBgColor="50,50,0"/>
+      <Warning Level="ServerStop"  TextColor="255,255,0" TextBgColor="50,50,0"/>
+      <Warning Level="ServerClose" TextColor="0,0,0"     TextBgColor="255,255,255"/>
+      <Warning Level="Normal"      TextColor="0,255,0"   TextBgColor="0,50,0"/>
+      <Warning Level="Warning"     TextColor="255,255,0" TextBgColor="50,50,0"/>
+      <Warning Level="Danger"      TextColor="255,0,0"   TextBgColor="50,0,0"/>
+    </WarningColor>
+    <LogicServer>
+      <ServerState State="未知"     WarningLevel="ServerClose" />
+      <ServerState State="初始"     WarningLevel="ServerInit" />
+      <ServerState State="正常"     WarningLevel="Normal" />
+      <ServerState State="停止"     WarningLevel="ServerStop" />
+      <ServerState State="离线"     WarningLevel="ServerClose" />
+      <ServerPressure Pressure="40" WarningLevel="Warning" />
+      <ServerPressure Pressure="80" WarningLevel="Danger" />
+    </LogicServer>
+    <PhysicalServer>
+      <Warning MemoryUsage="0"   WarningLevel="Normal" />
+      <Warning MemoryUsage="70"  WarningLevel="Warning" />
+      <Warning MemoryUsage="80"  WarningLevel="Danger" />
+    </PhysicalServer>
+  </WarningConfig>
+  <LogicServers Remark="逻辑服务器类型 以及 运行方式">
+    <SeverType Type="1" RunType="4"  Remark="网关服务器"     Thread="8" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/GateWayServer.exe"    WorkingDir="../ServerConfig/" PublicRecv="65535" PublicSend="65535" PublicBlock="65535" PublicConnect="3000" />
+    <SeverType Type="4" RunType="4"  Remark="登录服务器"     Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/LoginServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="6" RunType="2"  Remark="游戏服务器"     Thread="0" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" SaveTime="1800" ExePath="../Win32/Debug/GameServer.exe"     WorkingDir="../ServerConfig/"/>
+    <SeverType Type="7" RunType="4"  Remark="数据库服务器"   Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/DataBaseServer.exe"       WorkingDir="../ServerConfig/" />
+    <SeverType Type="8" RunType="2"  Remark="好友服务器"     Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/FriendServer.exe"     WorkingDir="../ServerConfig/"/>
+    <SeverType Type="10" RunType="3"  Remark="排行榜服务器"  Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" SaveTime="1800" ExePath="../Win32/Debug/RankServer.exe"    WorkingDir="../ServerConfig/"/>
+    <SeverType Type="14" RunType="2"  Remark="邮件服务器"    Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" SaveTime="1800" ExePath="../Win32/Debug/MailServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="15" RunType="4"  Remark="商店服务器"    Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535"  ExePath="../Win32/Debug/ShopServer.exe"    WorkingDir="../ServerConfig/" />
+    <SeverType Type="18" RunType="3"  Remark="内网服务器"    Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/InnerServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="20" RunType="2" Remark="推送服务器"     Thread="0" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/GamePushServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="23" RunType="4" Remark="日志服务器"     Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/LogServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="24" RunType="4" Remark="战斗服务器"     Thread="8" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/BattleServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="25" RunType="4" Remark="普通匹配服务器"    Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/MatchServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="26" RunType="4" Remark="天梯匹配服务器"    Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/MatchServer.exe"   WorkingDir="../ServerConfig/"/>
+    <SeverType Type="27" RunType="4" Remark="竞技场匹配服务器"    Thread="4" RunOnce="20" TimeInterval="5000" RecvSize="0" SendSize="0" BlockSize="65535" ExePath="../Win32/Debug/MatchServer.exe"   WorkingDir="../ServerConfig/"/>
+  </LogicServers>
+  <LogicLinks Remark="逻辑服务器之间的连接方式">
+    <Link SrcSrv="1"  DesSrv="4"  Count="4" />
+    <Link SrcSrv="1"  DesSrv="6"  Count="1" />
+    <Link SrcSrv="1"  DesSrv="8"  Count="1" />
+    <Link SrcSrv="1"  DesSrv="10" Count="1" />
+    <Link SrcSrv="1"  DesSrv="14" Count="4" />
+    <Link SrcSrv="1"  DesSrv="15" Count="4" />
+    <Link SrcSrv="6"  DesSrv="6"  Count="1" />
+    <Link SrcSrv="1"  DesSrv="7"  Count="4" />
+    <Link SrcSrv="6"  DesSrv="7"  Count="4" />
+    <Link SrcSrv="6"  DesSrv="8"  Count="4" />
+    <Link SrcSrv="6"  DesSrv="10" Count="4" />
+    <Link SrcSrv="6"  DesSrv="14" Count="1" />
+    <Link SrcSrv="6"  DesSrv="15" Count="4" />
+    <Link SrcSrv="10" DesSrv="7"  Count="4" />
+    <Link SrcSrv="10" DesSrv="14" Count="4" />
+    <Link SrcSrv="14" DesSrv="7"  Count="4" />
+    <Link SrcSrv="15" DesSrv="7"  Count="4" />
+
+
+    <Link SrcSrv="8"  DesSrv="7"  Count="4" />
+    <Link SrcSrv="8"  DesSrv="8"  Count="4" />
+
+    <Link SrcSrv="6"  DesSrv="18" Count="4" />
+    <Link SrcSrv="4"  DesSrv="18" Count="4" />
+    <Link SrcSrv="15" DesSrv="18" Count="4" />
+
+    <Link SrcSrv="1"  DesSrv="20" Count="4" />
+    <Link SrcSrv="6"  DesSrv="20" Count="4" />
+
+    <Link SrcSrv="6"  DesSrv="23"  Count="4" />
+
+
+    <Link SrcSrv="1"  DesSrv="24"  Count="4" />
+    <Link SrcSrv="1"  DesSrv="25"  Count="1" />
+    <Link SrcSrv="1"  DesSrv="26"  Count="1" />
+    <Link SrcSrv="1"  DesSrv="27"  Count="1" />
+    <Link SrcSrv="6"  DesSrv="24"  Count="4" />
+    <Link SrcSrv="6"  DesSrv="25"  Count="4" />
+    <Link SrcSrv="6"  DesSrv="26"  Count="4" />
+    <Link SrcSrv="6"  DesSrv="27"  Count="4" />
+    <Link SrcSrv="24" DesSrv="25"  Count="4" />
+    <Link SrcSrv="24" DesSrv="26"  Count="4" />
+    <Link SrcSrv="24" DesSrv="27"  Count="4" />
+    <Link SrcSrv="25" DesSrv="25"  Count="4" />
+    <Link SrcSrv="26" DesSrv="26"  Count="4" />
+    <Link SrcSrv="27" DesSrv="27"  Count="4" />
+
+  </LogicLinks>
+  <Solution Name="调试服务器" Remark="调试版本" SrvTag="Debug" >
+    <LogicServers Remark="调试服务器配置">
+      <SeverType Type="1"  ExePath="../Win32/Debug/GateWayServer.exe"  />
+      <SeverType Type="4"  ExePath="../Win32/Debug/LoginServer.exe"    />
+      <SeverType Type="6"  ExePath="../Win32/Debug/GameServer.exe"     />
+      <SeverType Type="7"  ExePath="../Win32/Debug/DataBaseServer.exe" />
+      <SeverType Type="8"  ExePath="../Win32/Debug/FriendServer.exe"   />
+      <SeverType Type="10" ExePath="../Win32/Debug/RankServer.exe"    />
+      <SeverType Type="14" ExePath="../Win32/Debug/MailServer.exe"    />
+      <SeverType Type="15" ExePath="../Win32/Debug/ShopServer.exe"    />
+      <SeverType Type="18" ExePath="../Win32/Debug/InnerServer.exe"   />
+      <SeverType Type="20" ExePath="../Win32/Debug/GamePushServer.exe"/>
+      <SeverType Type="23" ExePath="../Win32/Debug/LogServer.exe"     />
+      <SeverType Type="24" ExePath="../Win32/Debug/BattleServer.exe"  />
+      <SeverType Type="25" ExePath="../Win32/Debug/MatchServer.exe"   />
+      <SeverType Type="26" ExePath="../Win32/Debug/MatchServer.exe"   />
+      <SeverType Type="27" ExePath="../Win32/Debug/MatchServer.exe"   />
+    </LogicServers>
+    <ServerList Remark="服务器列表" BeginServerID="1" BeginPort="15000">
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14000" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14001" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14002" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14003" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="4"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="7"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="10"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="15"  />
+      <Sever PhysicalID="1"  ServerType="18"  PublicPort="14070" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="23"  />
+      <Sever PhysicalID="1"  ServerType="24"  />
+      <Sever PhysicalID="1"  ServerType="25"  />
+      <Sever PhysicalID="1"  ServerType="26"  />
+      <Sever PhysicalID="1"  ServerType="27"  />
+    </ServerList>
+  </Solution>
+  <Solution Name="压测服务器" Remark="调试版本">
+    <LogicServers Remark="调试服务器配置">
+      <SeverType Type="1"  ExePath="../Win32/Debug/GateWayServer.exe"  />
+      <SeverType Type="4"  ExePath="../Win32/Debug/LoginServer.exe"    />
+      <SeverType Type="6"  ExePath="../Win32/Debug/GameServer.exe"     />
+      <SeverType Type="7"  ExePath="../Win32/Debug/DataBaseServer.exe" />
+      <SeverType Type="8"  ExePath="../Win32/Debug/FriendServer.exe"   />
+      <SeverType Type="10" ExePath="../Win32/Debug/RankServer.exe"    />
+      <SeverType Type="14" ExePath="../Win32/Debug/MailServer.exe"    />
+      <SeverType Type="15" ExePath="../Win32/Debug/ShopServer.exe"    />
+      <SeverType Type="18" ExePath="../Win32/Debug/InnerServer.exe"   />
+      <SeverType Type="20" ExePath="../Win32/Debug/GamePushServer.exe"/>
+      <SeverType Type="23" ExePath="../Win32/Debug/LogServer.exe"     />
+      <SeverType Type="24" ExePath="../Win32/Debug/BattleServer.exe"  />
+      <SeverType Type="25" ExePath="../Win32/Debug/MatchServer.exe"   />
+      <SeverType Type="26" ExePath="../Win32/Debug/MatchServer.exe"   />
+      <SeverType Type="27" ExePath="../Win32/Debug/MatchServer.exe"   />
+    </LogicServers>
+    <ServerList Remark="服务器列表" BeginServerID="1" BeginPort="15000">
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14000" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14001" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14002" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14003" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="4"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="7"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="10"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="15"  />
+      <Sever PhysicalID="1"  ServerType="18"  PublicPort="14070" PublicConnect="3000" Command="" />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="23"  />
+      <Sever PhysicalID="1"  ServerType="24"  />
+      <Sever PhysicalID="1"  ServerType="25"  />
+      <Sever PhysicalID="1"  ServerType="26"  />
+      <Sever PhysicalID="1"  ServerType="27"  />
+    </ServerList>
+  </Solution>
+  <Solution Name="官方服务器" Remark="发布版本">
+    <LogicServers Remark="发布服务器配置">
+      <SeverType Type="1"  ExePath="../Win32/Release/GateWayServer.exe"  />
+      <SeverType Type="4"  ExePath="../Win32/Release/LoginServer.exe"    />
+      <SeverType Type="6"  ExePath="../Win32/Release/GameServer.exe"     />
+      <SeverType Type="7"  ExePath="../Win32/Release/DataBaseServer.exe" />
+      <SeverType Type="8"  ExePath="../Win32/Release/FriendServer.exe"   />
+      <SeverType Type="10" ExePath="../Win32/Release/RankServer.exe"    />
+      <SeverType Type="14" ExePath="../Win32/Release/MailServer.exe"    />
+      <SeverType Type="15" ExePath="../Win32/Release/ShopServer.exe"    />
+      <SeverType Type="18" ExePath="../Win32/Release/InnerServer.exe"   />
+      <SeverType Type="20" ExePath="../Win32/Release/GamePushServer.exe"/>
+      <SeverType Type="23" ExePath="../Win32/Release/LogServer.exe"     />
+      <SeverType Type="24" ExePath="../Win32/Release/BattleServer.exe"  />
+      <SeverType Type="25" ExePath="../Win32/Release/MatchServer.exe"   />
+      <SeverType Type="26" ExePath="../Win32/Release/MatchServer.exe"   />
+      <SeverType Type="27" ExePath="../Win32/Release/MatchServer.exe"   />
+    </LogicServers>
+    <ServerList Remark="服务器列表" BeginServerID="1" BeginPort="15000">
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14000" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14001" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14002" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14003" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="4"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="7"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="10"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="15"  />
+      <Sever PhysicalID="1"  ServerType="18"  PublicPort="14070" PublicConnect="30000" Command="" />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="23"  />
+      <Sever PhysicalID="1"  ServerType="24"  />
+      <Sever PhysicalID="1"  ServerType="25"  />
+      <Sever PhysicalID="1"  ServerType="26"  />
+      <Sever PhysicalID="1"  ServerType="27"  />
+    </ServerList>
+  </Solution>
+  <Solution Name="审核服务器" Remark="发布版本">
+    <LogicServers Remark="发布服务器配置">
+      <SeverType Type="1"  ExePath="../Win32/Release/GateWayServer.exe"  />
+      <SeverType Type="4"  ExePath="../Win32/Release/LoginServer.exe"    />
+      <SeverType Type="6"  ExePath="../Win32/Release/GameServer.exe"     />
+      <SeverType Type="7"  ExePath="../Win32/Release/DataBaseServer.exe" />
+      <SeverType Type="8"  ExePath="../Win32/Release/FriendServer.exe"   />
+      <SeverType Type="10" ExePath="../Win32/Release/RankServer.exe"    />
+      <SeverType Type="14" ExePath="../Win32/Release/MailServer.exe"    />
+      <SeverType Type="15" ExePath="../Win32/Release/ShopServer.exe"    />
+      <SeverType Type="18" ExePath="../Win32/Release/InnerServer.exe"   />
+      <SeverType Type="20" ExePath="../Win32/Release/GamePushServer.exe"/>
+      <SeverType Type="23" ExePath="../Win32/Release/LogServer.exe"     />
+      <SeverType Type="24" ExePath="../Win32/Release/BattleServer.exe"  />
+      <SeverType Type="25" ExePath="../Win32/Release/MatchServer.exe"   />
+      <SeverType Type="26" ExePath="../Win32/Release/MatchServer.exe"   />
+      <SeverType Type="27" ExePath="../Win32/Release/MatchServer.exe"   />
+    </LogicServers>
+    <ServerList Remark="服务器列表" BeginServerID="1" BeginPort="15000">
+      <Sever PhysicalID="1"  ServerType="1"   PublicPort="14000" PublicConnect="3000" Command="" />
+      <Sever PhysicalID="1"  ServerType="4"   />
+      <Sever PhysicalID="1"  ServerType="6"   />
+      <Sever PhysicalID="1"  ServerType="7"   />
+      <Sever PhysicalID="1"  ServerType="8"   />
+      <Sever PhysicalID="1"  ServerType="10"  />
+      <Sever PhysicalID="1"  ServerType="14"  />
+      <Sever PhysicalID="1"  ServerType="15"  />
+      <Sever PhysicalID="1"  ServerType="18"  PublicPort="14070" PublicConnect="3000" Command="" />
+      <Sever PhysicalID="1"  ServerType="20"  />
+      <Sever PhysicalID="1"  ServerType="23"  />
+      <Sever PhysicalID="1"  ServerType="24"  />
+      <Sever PhysicalID="1"  ServerType="25"  />
+      <Sever PhysicalID="1"  ServerType="26"  />
+      <Sever PhysicalID="1"  ServerType="27"  />
+    </ServerList>
+  </Solution>
+</Config>

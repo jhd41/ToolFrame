@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LogCfg>
+  <!-- 日志执行器-->
+  <!-- 每个执行器配置对应一个执行器 可创建多个同类型执行器-->
+  <!-- 日志执行有两种形式,立即执行,线程执行。(立即执行将降低系统运行速度,线程执行将导致LOG可能打印不完全。) -->
+  <!-- 通配符: 进程名(不带后缀):{ProcessName} 可写目录:{WriteableDir} 工作目录:{WorkDir} 日期时间:{DateTime} 自定义标记:{Tag}-->
+
+  <!-- 一般日志-->
+  <!-- 屏幕打印器-->
+  <!--是否打印屏幕(默认:是) 颜色只对windows有效,颜色值查看 颜色附表-->
+  <!-- 颜色附表 -->
+  <!--  
+		FOREGROUND_BLUE      0x0001 // text color contains blue.
+		FOREGROUND_GREEN     0x0002 // text color contains green.
+		FOREGROUND_RED       0x0004 // text color contains red.
+		FOREGROUND_INTENSITY 0x0008 // text color is intensified.
+		BACKGROUND_BLUE      0x0010 // background color contains blue.
+		BACKGROUND_GREEN     0x0020 // background color contains green.
+		BACKGROUND_RED       0x0040 // background color contains red.
+		BACKGROUND_INTENSITY 0x0080 // background color is intensified.
+	-->
+  <!-- 定义日志执行器-->
+  <!-- 屏幕打印器-->
+  <!-- 文件写入器-->
+  <!-- 缓冲区大小	默认值1024 填写区间1~65535-->
+  <LogExecutor Enable="1" Name = "Printer" Type="Printer"  IsThread="0" />
+  <LogExecutor Enable="1" Name = "Normal"  Type="Writer"   IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/{Tag}_{ProcessName}.log"/>
+  <LogExecutor Enable="1" Name = "Err"     Type="Writer"   IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/{Tag}_err_{DateTime}.log"/>
+  <LogExecutor Enable="1" Name = "Net"     Type="Writer"   IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/{Tag}_net_{DateTime}.log"/>
+  <LogExecutor Enable="1" Name = "Debug"   Type="Writer"   IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/{Tag}_debug_{DateTime}.log"/>
+  <LogExecutor Enable="1" Name = "Lua"     Type="Writer"   IsThread="0" IsFlush="1" BufferSize = "1024" FilePath="{CacheDir}ExeLog/{ProcessName}/{Tag}_lua_{DateTime}.log"/>
+
+  <!-- 常规日志-->
+  <LogLevel Level="System"	  LogExecutor="Printer" Enable="1" Color="2" />
+  <LogLevel Level="Error"		  LogExecutor="Printer" Enable="1" Color="192" />
+  <LogLevel Level="Fatal"		  LogExecutor="Printer" Enable="1" Color="192" />
+  <LogLevel Level="Warning"	  LogExecutor="Printer" Enable="1" Color="12" />
+  <LogLevel Level="System"	  LogExecutor="Normal"  Enable="1" />
+  <LogLevel Level="Error"     LogExecutor="Normal"  Enable="1" />
+  <LogLevel Level="Fatal"     LogExecutor="Normal"  Enable="1" />
+  <LogLevel Level="Warning" 	LogExecutor="Normal"  Enable="1" />
+
+  <!-- 调试日志-->
+  <LogLevel Level="Debug"		  LogExecutor="Printer" Enable="0" Color="18" />
+  <LogLevel Level="Debug"		  LogExecutor="Debug"   Enable="0"  />
+
+  <!-- 调试错误日志-->
+  <LogLevel Level="DebugErr"	LogExecutor="Printer" Enable="1" Color="1" />
+  <LogLevel Level="ClientErr" LogExecutor="Printer" Enable="1" Color="20" />
+  <LogLevel Level="DebugErr"	LogExecutor="Err"     Enable="1" />
+  <LogLevel Level="ClientErr"	LogExecutor="Err"     Enable="1" />
+
+  <!-- 网络日志-->
+  <LogLevel Level="NetDebug"	LogExecutor="Printer" Enable="0" Color="18" />
+  <LogLevel Level="NetErr"	  LogExecutor="Printer" Enable="0" Color="36" />
+  <LogLevel Level="NetDebug"	LogExecutor="Net"     Enable="0" />
+  <LogLevel Level="NetErr"    LogExecutor="Net"     Enable="0" />
+
+  <!-- Lua日志 -->
+  <LogLevel Level="Lua"       LogExecutor="Printer" Enable="1" Color="2" />
+  <LogLevel Level="LuaDebug"  LogExecutor="Printer" Enable="1" Color="18" />
+  <LogLevel Level="LuaErr"		LogExecutor="Printer" Enable="1" Color="192" />
+  <LogLevel Level="Lua"		    LogExecutor="Lua"     Enable="1" />
+  <LogLevel Level="LuaDebug"	LogExecutor="Lua"     Enable="1"  />
+  <LogLevel Level="LuaErr"		LogExecutor="Lua"     Enable="1" />
+</LogCfg>

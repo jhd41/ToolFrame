@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TopologyCenter", "TopologyCenter\TopologyCenter.vcxproj", "{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TopologyPhysical", "TopologyPhysical\TopologyPhysical.vcxproj", "{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TopologyLogic", "TopologyLogic\TopologyLogic.vcxproj", "{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TopologyLogic2", "TopologyLogic2\TopologyLogic2.vcxproj", "{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TopologyController", "TopologyController\TopologyController.vcxproj", "{BE53A837-5118-4501-A5EF-F91A1DD19C75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugCocos2dx|Win32 = DebugCocos2dx|Win32
+		DebugMFC|Win32 = DebugMFC|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.Debug|Win32.Build.0 = Debug|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.DebugCocos2dx|Win32.ActiveCfg = Debug|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.DebugCocos2dx|Win32.Build.0 = Debug|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.DebugMFC|Win32.ActiveCfg = Debug|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.DebugMFC|Win32.Build.0 = Debug|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.Release|Win32.ActiveCfg = Release|Win32
+		{14E9B362-22A5-4AC9-BD7D-CFB745C725C9}.Release|Win32.Build.0 = Release|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.Debug|Win32.ActiveCfg = Debug|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.Debug|Win32.Build.0 = Debug|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.DebugCocos2dx|Win32.ActiveCfg = Debug|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.DebugCocos2dx|Win32.Build.0 = Debug|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.DebugMFC|Win32.ActiveCfg = Debug|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.DebugMFC|Win32.Build.0 = Debug|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.Release|Win32.ActiveCfg = Release|Win32
+		{98C0506D-B647-4EB8-AD9F-D9985B3D9E77}.Release|Win32.Build.0 = Release|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.Debug|Win32.Build.0 = Debug|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.DebugCocos2dx|Win32.ActiveCfg = Debug|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.DebugCocos2dx|Win32.Build.0 = Debug|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.DebugMFC|Win32.ActiveCfg = Debug|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.DebugMFC|Win32.Build.0 = Debug|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.Release|Win32.ActiveCfg = Release|Win32
+		{1F44DC52-C4F7-48A5-8C5D-F787849D6BDE}.Release|Win32.Build.0 = Release|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.Debug|Win32.Build.0 = Debug|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.DebugCocos2dx|Win32.ActiveCfg = Debug|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.DebugCocos2dx|Win32.Build.0 = Debug|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.DebugMFC|Win32.ActiveCfg = Debug|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.DebugMFC|Win32.Build.0 = Debug|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.Release|Win32.ActiveCfg = Release|Win32
+		{8D2A54EA-5F62-4567-A499-B7C637D0F5F5}.Release|Win32.Build.0 = Release|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.Debug|Win32.Build.0 = Debug|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.DebugCocos2dx|Win32.ActiveCfg = Debug|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.DebugCocos2dx|Win32.Build.0 = Debug|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.DebugMFC|Win32.ActiveCfg = Debug|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.DebugMFC|Win32.Build.0 = Debug|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.Release|Win32.ActiveCfg = Release|Win32
+		{BE53A837-5118-4501-A5EF-F91A1DD19C75}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

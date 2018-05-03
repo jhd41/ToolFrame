@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+  ClearMemory 为 内存不足时的警戒值 单位MB,当内存低于 该值 则会自动清理内存
+  系统默认值为50MB
+  默认发送接收缓冲区为无限
+  SendSize="65535" RecvSize="65535" PackSize="8192" BlockSize="65536"
+-->
+<Config>
+  <Topology CenterIP="127.0.0.1:16000" Password="" PhysicalID="1" ClearMemory="500" Address="" />
+</Config>

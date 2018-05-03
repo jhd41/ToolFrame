@@ -1,0 +1,11 @@
+#include "ToolWin.h"
+
+#if MACRO_TARGET_OS == MACRO_OS_WINDOWS
+
+NS_TOOL_FRAME_BEGIN
+
+
+
+NS_TOOL_FRAME_END
+
+#endif

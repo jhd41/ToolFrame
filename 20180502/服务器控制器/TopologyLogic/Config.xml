@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Config>
+  <CenterServer Address="127.0.0.1:8888" Password="" />
+  <LogicServer>
+    <Server Type="1" WorkDir="登录/" ExePath="登录/Login.exe" />
+  </LogicServer>
+</Config>
